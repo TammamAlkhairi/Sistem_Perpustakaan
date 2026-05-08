@@ -11,7 +11,7 @@ public class SistemPerpus {
 
     public static void main(String[] args) {
 
-        // Tambah data awal (contoh)
+        // Tambah data awal
         tambahDataAwal();
 
         int pilihan;
@@ -95,5 +95,26 @@ public class SistemPerpus {
             System.out.println("Data tidak ditemukan");
         }
     }
-}
 
+    // Cari berdasarkan ID
+    static int linearSearchID(int key) {
+        for (int i = 0; i < jumlahData; i++) {
+            if (id[i] == key) return i;
+        }
+        return -1;
+    }
+
+    // Cari berdasarkan Nama
+    static void cariNama() {
+        input.nextLine();
+
+        System.out.print("Masukkan nama: ");
+        String key = input.nextLine();
+
+        for (int i = 0; i < jumlahData; i++) {
+            if (nama[i].equalsIgnoreCase(key)) {
+                System.out.println("Ditemukan: " + id[i] + " | " + nama[i]);
+            }
+        }
+    }
+}
