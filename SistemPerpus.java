@@ -111,10 +111,17 @@ public class SistemPerpus {
         System.out.print("Masukkan nama: ");
         String key = input.nextLine();
 
+        boolean ditemukan = false;
+
         for (int i = 0; i < jumlahData; i++) {
             if (nama[i].equalsIgnoreCase(key)) {
                 System.out.println("Ditemukan: " + id[i] + " | " + nama[i]);
+                ditemukan = true;
             }
+        }
+        
+        if (!ditemukan) {
+            System.out.println("Data tidak ditemukan");
         }
     }
 }
