@@ -25,6 +25,7 @@ public class SistemPerpus {
             System.out.println("6. Cari ID (Binary)");
             System.out.println("7. Cari Kategori");
             System.out.println("8. Sort ID");
+            System.out.println("9. Sort Nama"); 
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = input.nextInt();
@@ -38,6 +39,7 @@ public class SistemPerpus {
                 case 6: cariID(); break;
                 case 7: cariKategori(); break;
                 case 8: sortID(); break;
+                case 9: sortNama(); break;
 
 
             }
@@ -219,5 +221,31 @@ public class SistemPerpus {
         String tempKategori = kategori[a];
         kategori[a] = kategori[b];
         kategori[b] = tempKategori;
+    }
+
+    static void selectionSortNama() {
+    for (int i = 0; i < jumlahData - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < jumlahData; j++) {
+            if (nama[j].compareToIgnoreCase(nama[minIndex]) < 0) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            swap(i, minIndex);
+        }
+    }
+}
+
+    static void sortNama() {
+        selectionSortNama();
+        System.out.println("=== Data Setelah Diurutkan (A-Z) ===");
+        for (int i = 0; i < jumlahData; i++) {
+            System.out.println(
+                id[i] + " | " +
+                nama[i] + " | " +
+                kategori[i]
+            ); 
+        }
     }
 }
