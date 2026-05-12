@@ -40,8 +40,6 @@ public class SistemPerpus {
                 case 7: cariKategori(); break;
                 case 8: sortID(); break;
                 case 9: sortNama(); break;
-
-
             }
         } while (pilihan != 0);
     }
@@ -100,13 +98,6 @@ public class SistemPerpus {
         }
     }
 
-    static int linearSearchID(int key) {
-        for (int i = 0; i < jumlahData; i++) {
-            if (id[i] == key) return i;
-        }
-        return -1;
-    }
-
     // Cari berdasarkan Nama
     static void cariNama() {
         input.nextLine();
@@ -128,6 +119,7 @@ public class SistemPerpus {
         }
     }
 
+    // cari berdasarkan ID
     static void cariID() {
         bubbleSortID();
         System.out.print("Masukkan ID: ");
@@ -143,6 +135,7 @@ public class SistemPerpus {
         }
     }
 
+    // cari berdasarkan ID 
     static void cariKategori() {
         input.nextLine();
 
@@ -170,8 +163,8 @@ public class SistemPerpus {
         }
     }
 
+    // urutkan berdasarkan ID (Ascending - Bubble Sort)
     static void sortID() {
-
     bubbleSortID();
 
     System.out.println("=== Data Setelah Diurutkan ===");
@@ -186,6 +179,48 @@ public class SistemPerpus {
         }
     }
 
+    // urutkan berdasarkan nama (selection sort)
+    static void sortNama() {
+        selectionSortNama();
+        System.out.println("=== Data Setelah Diurutkan (A-Z) ===");
+        for (int i = 0; i < jumlahData; i++) {
+            System.out.println(
+                id[i] + " | " +
+                nama[i] + " | " +
+                kategori[i]
+            ); 
+        }
+    }
+
+    // sorting
+
+    static void bubbleSortID() {
+        for (int i = 0; i < jumlahData - 1; i++) {
+            for (int j = 0; j < jumlahData - 1 - i; j++) {
+                if (id[j] > id[j + 1]) {
+                    // tukar semua atribut
+                    swap(j, j + 1);
+                }
+            }
+        }
+    }
+
+    static void selectionSortNama() {
+        for (int i = 0; i < jumlahData - 1; i++) {
+        int minIndex = i;
+            for (int j = i + 1; j < jumlahData; j++) {
+                if (nama[j].compareToIgnoreCase(nama[minIndex]) < 0) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                swap(i, minIndex);
+            }
+        }
+    }
+
+    // searching
+
     static int binarySearch(int key) {
         int low = 0, high = jumlahData - 1;
 
@@ -198,15 +233,11 @@ public class SistemPerpus {
         return -1;
     }
 
-    static void bubbleSortID() {
-        for (int i = 0; i < jumlahData - 1; i++) {
-            for (int j = 0; j < jumlahData - 1 - i; j++) {
-                if (id[j] > id[j + 1]) {
-                    // tukar semua atribut
-                    swap(j, j + 1);
-                }
-            }
+    static int linearSearchID(int key) {
+        for (int i = 0; i < jumlahData; i++) {
+            if (id[i] == key) return i;
         }
+        return -1;
     }
 
     static void swap(int a, int b) {
@@ -221,31 +252,5 @@ public class SistemPerpus {
         String tempKategori = kategori[a];
         kategori[a] = kategori[b];
         kategori[b] = tempKategori;
-    }
-
-    static void selectionSortNama() {
-    for (int i = 0; i < jumlahData - 1; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < jumlahData; j++) {
-            if (nama[j].compareToIgnoreCase(nama[minIndex]) < 0) {
-                minIndex = j;
-            }
-        }
-        if (minIndex != i) {
-            swap(i, minIndex);
-        }
-    }
-}
-
-    static void sortNama() {
-        selectionSortNama();
-        System.out.println("=== Data Setelah Diurutkan (A-Z) ===");
-        for (int i = 0; i < jumlahData; i++) {
-            System.out.println(
-                id[i] + " | " +
-                nama[i] + " | " +
-                kategori[i]
-            ); 
-        }
     }
 }
