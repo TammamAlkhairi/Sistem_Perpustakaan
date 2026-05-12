@@ -125,29 +125,54 @@ public class SistemPerpus {
     }
    
     static void cariID() {
+        bubbleSortID();
         System.out.print("Masukkan ID: ");
         int key = input.nextInt();
 
-        int left = 0, right = jumlahData - 1;
+        int hasil = binarySearch(key);
         boolean ditemukan = false;
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            if (id[mid] == key) {
-                System.out.println("Ditemukan: " + id[mid] + " | " + nama[mid] + " | " + kategori[mid]);
-                ditemukan = true;
-                break;
-            } else if (id[mid] < key) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-
-        if (!ditemukan) {
-            System.out.println("Data tidak ditemukan");
+        if (hasil != -1) {
+            System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil]);
+        } else {
+            System.out.println("Tidak ditemukan");
         }
     }
-       
+
+    static int binarySearch(int key) {
+        int low = 0, high = jumlahData - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (id[mid] == key) return mid;
+            else if (id[mid] < key) low = mid + 1;
+            else high = mid - 1;
+        }
+        return -1;
+    }
+
+    static void bubbleSortID() {
+        for (int i = 0; i < jumlahData - 1; i++) {
+            for (int j = 0; j < jumlahData - 1 - i; j++) {
+                if (id[j] > id[j + 1]) {
+                    // tukar semua atribut
+                    swap(j, j + 1);
+                }
+            }
+        }
+    }
+
+    static void swap(int a, int b) {
+        int tempId = id[a];
+        id[a] = id[b];
+        id[b] = tempId;
+
+        String tempNama = nama[a];
+        nama[a] = nama[b];
+        nama[b] = tempNama;
+
+        String tempKategori = kategori[a];
+        kategori[a] = kategori[b];
+        kategori[b] = tempKategori;
+    }
 }
