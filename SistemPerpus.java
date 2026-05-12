@@ -24,6 +24,7 @@ public class SistemPerpus {
             System.out.println("5. Cari Nama (Linear)");
             System.out.println("6. Cari ID (Binary)");
             System.out.println("7. Cari Kategori");
+            System.out.println("8. Sort ID");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = input.nextInt();
@@ -36,6 +37,8 @@ public class SistemPerpus {
                 case 5: cariNama(); break;
                 case 6: cariID(); break;
                 case 7: cariKategori(); break;
+                case 8: sortID(); break;
+
 
             }
         } while (pilihan != 0);
@@ -95,7 +98,6 @@ public class SistemPerpus {
         }
     }
 
-    // Cari berdasarkan ID
     static int linearSearchID(int key) {
         for (int i = 0; i < jumlahData; i++) {
             if (id[i] == key) return i;
@@ -121,6 +123,21 @@ public class SistemPerpus {
         
         if (!ditemukan) {
             System.out.println("Data tidak ditemukan");
+        }
+    }
+
+    static void cariID() {
+        bubbleSortID();
+        System.out.print("Masukkan ID: ");
+        int key = input.nextInt();
+
+        int hasil = binarySearch(key);
+        boolean ditemukan = false;
+
+        if (hasil != -1) {
+            System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil]);
+        } else {
+            System.out.println("Tidak ditemukan");
         }
     }
 
@@ -151,18 +168,19 @@ public class SistemPerpus {
         }
     }
 
-    static void cariID() {
-        bubbleSortID();
-        System.out.print("Masukkan ID: ");
-        int key = input.nextInt();
+    static void sortID() {
 
-        int hasil = binarySearch(key);
-        boolean ditemukan = false;
+    bubbleSortID();
 
-        if (hasil != -1) {
-            System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil]);
-        } else {
-            System.out.println("Tidak ditemukan");
+    System.out.println("=== Data Setelah Diurutkan ===");
+
+        for (int i = 0; i < jumlahData; i++) {
+
+            System.out.println(
+                id[i] + " | " +
+                nama[i] + " | " +
+                kategori[i]
+            ); 
         }
     }
 
