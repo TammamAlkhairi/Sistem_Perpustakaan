@@ -12,7 +12,7 @@ public class SistemPerpus {
     public static void main(String[] args) {
 
         // Tambah data awal
-        tambahDataAwal();
+    
 
         int pilihan;
         do {
@@ -24,7 +24,6 @@ public class SistemPerpus {
             System.out.println("5. Cari Nama (Linear)");
             System.out.println("6. Cari ID (Binary)");
             System.out.println("7. Sort ID (Bubble)");
-            System.out.println("8. Sort Nama (Selection)");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = input.nextInt();
@@ -36,8 +35,8 @@ public class SistemPerpus {
                 case 4: hapusData(); break;
                 case 5: cariNama(); break;
                 case 6: cariID(); break;
-                case 7: bubbleSortID(); break;
-                case 8: selectionSortNama(); break;
+    
+
             }
         } while (pilihan != 0);
     }
@@ -124,4 +123,31 @@ public class SistemPerpus {
             System.out.println("Data tidak ditemukan");
         }
     }
+   
+    static void cariID() {
+        System.out.print("Masukkan ID: ");
+        int key = input.nextInt();
+
+        int left = 0, right = jumlahData - 1;
+        boolean ditemukan = false;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (id[mid] == key) {
+                System.out.println("Ditemukan: " + id[mid] + " | " + nama[mid] + " | " + kategori[mid]);
+                ditemukan = true;
+                break;
+            } else if (id[mid] < key) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        if (!ditemukan) {
+            System.out.println("Data tidak ditemukan");
+        }
+    }
+       
 }
