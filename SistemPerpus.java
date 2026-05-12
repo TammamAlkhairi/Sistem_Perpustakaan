@@ -23,7 +23,7 @@ public class SistemPerpus {
             System.out.println("4. Hapus Data");
             System.out.println("5. Cari Nama (Linear)");
             System.out.println("6. Cari ID (Binary)");
-            System.out.println("7. Sort ID (Bubble)");
+            System.out.println("7. Cari Kategori");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = input.nextInt();
@@ -35,7 +35,7 @@ public class SistemPerpus {
                 case 4: hapusData(); break;
                 case 5: cariNama(); break;
                 case 6: cariID(); break;
-    
+                case 7: cariKategori(); break;
 
             }
         } while (pilihan != 0);
@@ -123,7 +123,34 @@ public class SistemPerpus {
             System.out.println("Data tidak ditemukan");
         }
     }
-   
+
+    static void cariKategori() {
+        input.nextLine();
+
+        System.out.print("Masukkan kategori: ");
+        String key = input.nextLine();
+
+        boolean ditemukan = false;
+
+        for (int i = 0; i < jumlahData; i++) {
+
+            if (kategori[i].equalsIgnoreCase(key)) {
+
+                System.out.println(
+                        id[i] + " | " +
+                        nama[i] + " | " +
+                        kategori[i]
+                );
+
+                ditemukan = true;
+            }
+        }
+
+        if (!ditemukan) {
+            System.out.println("Kategori tidak ditemukan");
+        }
+    }
+
     static void cariID() {
         bubbleSortID();
         System.out.print("Masukkan ID: ");
