@@ -7,6 +7,7 @@ public class SistemPerpus {
     static int[] id = new int[100];
     static String[] nama = new String[100];
     static String[] kategori = new String[100];
+    static int [] jumlah = new int[100];
     static int jumlahData = 0;
 
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class SistemPerpus {
             System.out.println("7. Cari Kategori");
             System.out.println("8. Sort ID");
             System.out.println("9. Sort Nama"); 
+            System.out.println("10. Sort Jumlah");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = input.nextInt();
@@ -40,6 +42,7 @@ public class SistemPerpus {
                 case 7: cariKategori(); break;
                 case 8: sortID(); break;
                 case 9: sortNama(); break;
+                case 10: sortJumlahDescending(); break;
             }
         } while (pilihan != 0);
     }
@@ -54,12 +57,14 @@ public class SistemPerpus {
         System.out.print("Kategori: ");
         kategori[jumlahData] = input.nextLine();
         jumlahData++;
+        System.out.print("Jumlah Buku: ");
+        jumlah[jumlahData] = input.nextInt();
     }
 
     //Menampilkan Data
     static void tampilData() {
         for (int i = 0; i < jumlahData; i++) {
-            System.out.println(id[i] + " | " + nama[i] + " | " + kategori[i]);
+            System.out.println(id[i] + " | " + nama[i] + " | " + kategori[i] + " | " + jumlah[i]);
         }
     }
 
@@ -75,6 +80,8 @@ public class SistemPerpus {
             nama[index] = input.nextLine();
             System.out.print("Kategori baru: ");
             kategori[index] = input.nextLine();
+            System.out.print("Jumlah baru: ");
+            jumlah[index] = input.nextInt();
         } else {
             System.out.println("Data tidak ditemukan");
         }
@@ -91,6 +98,7 @@ public class SistemPerpus {
                 id[i] = id[i + 1];
                 nama[i] = nama[i + 1];
                 kategori[i] = kategori[i + 1];
+                jumlah[i] = jumlah[i + 1];
             }
             jumlahData--;
         } else {
@@ -109,7 +117,7 @@ public class SistemPerpus {
 
         for (int i = 0; i < jumlahData; i++) {
             if (nama[i].equalsIgnoreCase(key)) {
-                System.out.println("Ditemukan: " + id[i] + " | " + nama[i]);
+                System.out.println("Ditemukan: " + id[i] + " | " + nama[i] + " | " + kategori[i] + " | " + jumlah[i]);
                 ditemukan = true;
             }
         }
@@ -129,7 +137,7 @@ public class SistemPerpus {
         boolean ditemukan = false;
 
         if (hasil != -1) {
-            System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil]);
+            System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil] + " | " + kategori[hasil] + " | " + jumlah[hasil]);
         } else {
             System.out.println("Tidak ditemukan");
         }
@@ -151,7 +159,8 @@ public class SistemPerpus {
                 System.out.println(
                         id[i] + " | " +
                         nama[i] + " | " +
-                        kategori[i]
+                        kategori[i] + " | " +
+                        jumlah[i]
                 );
 
                 ditemukan = true;
@@ -174,7 +183,8 @@ public class SistemPerpus {
             System.out.println(
                 id[i] + " | " +
                 nama[i] + " | " +
-                kategori[i]
+                kategori[i] + " | " +
+                jumlah[i]
             ); 
         }
     }
@@ -187,7 +197,8 @@ public class SistemPerpus {
             System.out.println(
                 id[i] + " | " +
                 nama[i] + " | " +
-                kategori[i]
+                kategori[i] + " | " +
+                jumlah[i]
             ); 
         }
     }
@@ -252,5 +263,35 @@ public class SistemPerpus {
         String tempKategori = kategori[a];
         kategori[a] = kategori[b];
         kategori[b] = tempKategori;
+
+        int tempJumlah = jumlah[a];
+        jumlah[a] = jumlah[b];
+        jumlah[b] = tempJumlah;
     }
+    // Urutkan berdasarkan jumlah
+    static void sortJumlahDescending() {
+
+    for (int i = 0; i < jumlahData - 1; i++) {
+
+        for (int j = 0; j < jumlahData - 1 - i; j++) {
+
+            if (jumlah[j] < jumlah[j + 1]) {
+
+                swap(j, j + 1);
+            }
+        }
+    }
+
+    System.out.println("=== Data Setelah Diurutkan ===");
+
+    for (int i = 0; i < jumlahData; i++) {
+
+        System.out.println(
+            id[i] + " | " +
+            nama[i] + " | " +
+            kategori[i] + " | " +
+            jumlah[i]
+        );
+    }
+}
 }
