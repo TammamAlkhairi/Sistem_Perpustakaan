@@ -12,9 +12,8 @@ public class SistemPerpus {
 
     public static void main(String[] args) {
 
-        // Tambah data awal
+        // Inisialisasi data awal buku
     
-
         int pilihan;
         do {
             System.out.println("\n=== SISTEM PERPUSTAKAAN ===");
@@ -43,32 +42,45 @@ public class SistemPerpus {
                 case 8: sortID(); break;
                 case 9: sortNama(); break;
                 case 10: sortJumlahDescending(); break;
+                case 0: 
+                    System.out.println("Program Selesai");
+                    break;
+                default: 
+                    System.out.println("Pilihan tidak valid");
             }
         } while (pilihan != 0);
     }
 
-    // Tambah Data
+    // Method menambahkan data buku baru
     static void tambahData() {
         System.out.print("ID: ");
         id[jumlahData] = input.nextInt();
         input.nextLine();
+
         System.out.print("Nama Buku: ");
         nama[jumlahData] = input.nextLine();
+
         System.out.print("Kategori: ");
         kategori[jumlahData] = input.nextLine();
-        jumlahData++;
+
         System.out.print("Jumlah Buku: ");
         jumlah[jumlahData] = input.nextInt();
+        
+        jumlahData++;
     }
 
-    //Menampilkan Data
+    // Method menampilkan seluruh data buku
     static void tampilData() {
+        if (jumlahData == 0) {
+        System.out.println("Data kosong");
+        return;
+    }
         for (int i = 0; i < jumlahData; i++) {
             System.out.println(id[i] + " | " + nama[i] + " | " + kategori[i] + " | " + jumlah[i]);
         }
     }
 
-    // Edit Data
+    // Method mengubah data buku berdasarkan ID
     static void editData() {
         System.out.print("Masukkan ID yang ingin diedit: ");
         int key = input.nextInt();
@@ -87,7 +99,7 @@ public class SistemPerpus {
         }
     }
 
-    // Menghapus data
+    // Method menghapus data buku berdasarkan ID
     static void hapusData() {
         System.out.print("Masukkan ID yang ingin dihapus: ");
         int key = input.nextInt();
@@ -106,7 +118,7 @@ public class SistemPerpus {
         }
     }
 
-    // Cari berdasarkan Nama
+    // Method Linear Search untuk mencari buku berdasarkan nama
     static void cariNama() {
         input.nextLine();
 
@@ -127,14 +139,12 @@ public class SistemPerpus {
         }
     }
 
-    // cari berdasarkan ID
+    // Method Binary Search untuk mencari buku berdasarkan ID
     static void cariID() {
         bubbleSortID();
         System.out.print("Masukkan ID: ");
         int key = input.nextInt();
-
         int hasil = binarySearch(key);
-        boolean ditemukan = false;
 
         if (hasil != -1) {
             System.out.println("Ditemukan: " + id[hasil] + " | " + nama[hasil] + " | " + kategori[hasil] + " | " + jumlah[hasil]);
@@ -143,7 +153,7 @@ public class SistemPerpus {
         }
     }
 
-    // cari berdasarkan ID 
+    // Method Linear Search untuk mencari buku berdasarkan kategori
     static void cariKategori() {
         input.nextLine();
 
@@ -172,14 +182,12 @@ public class SistemPerpus {
         }
     }
 
-    // urutkan berdasarkan ID (Ascending - Bubble Sort)
+    // Method Bubble Sort untuk mengurutkan ID secara ascending
     static void sortID() {
-    bubbleSortID();
+        bubbleSortID();
 
-    System.out.println("=== Data Setelah Diurutkan ===");
-
+        System.out.println("=== Data Setelah Diurutkan ===");
         for (int i = 0; i < jumlahData; i++) {
-
             System.out.println(
                 id[i] + " | " +
                 nama[i] + " | " +
@@ -189,9 +197,10 @@ public class SistemPerpus {
         }
     }
 
-    // urutkan berdasarkan nama (selection sort)
+    // Method Selection Sort untuk mengurutkan nama buku A-Z
     static void sortNama() {
         selectionSortNama();
+
         System.out.println("=== Data Setelah Diurutkan (A-Z) ===");
         for (int i = 0; i < jumlahData; i++) {
             System.out.println(
@@ -203,8 +212,9 @@ public class SistemPerpus {
         }
     }
 
-    // sorting
+    // Kumpulan method sorting
 
+    // Bubble Sort ascending berdasarkan ID buku
     static void bubbleSortID() {
         for (int i = 0; i < jumlahData - 1; i++) {
             for (int j = 0; j < jumlahData - 1 - i; j++) {
@@ -216,6 +226,7 @@ public class SistemPerpus {
         }
     }
 
+    // Selection Sort ascending berdasarkan nama buku
     static void selectionSortNama() {
         for (int i = 0; i < jumlahData - 1; i++) {
         int minIndex = i;
@@ -230,8 +241,9 @@ public class SistemPerpus {
         }
     }
 
-    // searching
+    // Kumpulan method searching
 
+    // Binary Search untuk mencari ID buku
     static int binarySearch(int key) {
         int low = 0, high = jumlahData - 1;
 
@@ -244,6 +256,7 @@ public class SistemPerpus {
         return -1;
     }
 
+    // Linear Search untuk mencari posisi ID buku
     static int linearSearchID(int key) {
         for (int i = 0; i < jumlahData; i++) {
             if (id[i] == key) return i;
@@ -251,6 +264,7 @@ public class SistemPerpus {
         return -1;
     }
 
+    // Method untuk menukar seluruh atribut data buku
     static void swap(int a, int b) {
         int tempId = id[a];
         id[a] = id[b];
@@ -268,30 +282,26 @@ public class SistemPerpus {
         jumlah[a] = jumlah[b];
         jumlah[b] = tempJumlah;
     }
-    // Urutkan berdasarkan jumlah
+
+    // Bubble Sort descending berdasarkan jumlah buku
     static void sortJumlahDescending() {
 
     for (int i = 0; i < jumlahData - 1; i++) {
-
         for (int j = 0; j < jumlahData - 1 - i; j++) {
-
             if (jumlah[j] < jumlah[j + 1]) {
-
                 swap(j, j + 1);
             }
         }
     }
 
-    System.out.println("=== Data Setelah Diurutkan ===");
-
-    for (int i = 0; i < jumlahData; i++) {
-
-        System.out.println(
-            id[i] + " | " +
-            nama[i] + " | " +
-            kategori[i] + " | " +
-            jumlah[i]
-        );
+    System.out.println("=== Data Setelah Diurutkan (Descending) ===");
+        for (int i = 0; i < jumlahData; i++) {
+            System.out.println(
+                id[i] + " | " +
+                nama[i] + " | " +
+                kategori[i] + " | " +
+                jumlah[i]
+            );
+        }
     }
-}
 }
