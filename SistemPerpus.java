@@ -13,6 +13,37 @@ public class SistemPerpus {
     public static void main(String[] args) {
 
         // Inisialisasi data awal buku
+        id[0]=1;  nama[0]="Matematika Dasar";       kategori[0]="Sains";     jumlah[0]=15;
+        id[1]=2;  nama[1]="Fisika Modern";           kategori[1]="Sains";     jumlah[1]=8;
+        id[2]=3;  nama[2]="Kimia Organik";           kategori[2]="Sains";     jumlah[2]=12;
+        id[3]=4;  nama[3]="Biologi Sel";             kategori[3]="Sains";     jumlah[3]=20;
+        id[4]=5;  nama[4]="Statistika Terapan";      kategori[4]="Sains";     jumlah[4]=6;
+        id[5]=6;  nama[5]="Kalkulus Lanjut";         kategori[5]="Sains";     jumlah[5]=9;
+        id[6]=7;  nama[6]="Pemrograman Java";        kategori[6]="Teknologi"; jumlah[6]=25;
+        id[7]=8;  nama[7]="Basis Data";              kategori[7]="Teknologi"; jumlah[7]=18;
+        id[8]=9;  nama[8]="Jaringan Komputer";       kategori[8]="Teknologi"; jumlah[8]=11;
+        id[9]=10; nama[9]="Kecerdasan Buatan";       kategori[9]="Teknologi"; jumlah[9]=30;
+        id[10]=11; nama[10]="Struktur Data";         kategori[10]="Teknologi"; jumlah[10]=14;
+        id[11]=12; nama[11]="Keamanan Siber";        kategori[11]="Teknologi"; jumlah[11]=7;
+        id[12]=13; nama[12]="Algoritma Pemrograman"; kategori[12]="Teknologi"; jumlah[12]=22;
+        id[13]=14; nama[13]="Sejarah Indonesia";     kategori[13]="Sejarah";  jumlah[13]=10;
+        id[14]=15; nama[14]="Sejarah Dunia";         kategori[14]="Sejarah";  jumlah[14]=13;
+        id[15]=16; nama[15]="Perang Dunia II";       kategori[15]="Sejarah";  jumlah[15]=8;
+        id[16]=17; nama[16]="Revolusi Industri";     kategori[16]="Sejarah";  jumlah[16]=5;
+        id[17]=18; nama[17]="Sejarah Islam";         kategori[17]="Sejarah";  jumlah[17]=16;
+        id[18]=19; nama[18]="Dinasti Ming";          kategori[18]="Sejarah";  jumlah[18]=4;
+        id[19]=20; nama[19]="Kolonialisme Eropa";    kategori[19]="Sejarah";  jumlah[19]=9;
+        id[20]=21; nama[20]="Sejarah Romawi";        kategori[20]="Sejarah";  jumlah[20]=11;
+        id[21]=22; nama[21]="Bahasa Indonesia";      kategori[21]="Bahasa";   jumlah[21]=17;
+        id[22]=23; nama[22]="Bahasa Inggris";        kategori[22]="Bahasa";   jumlah[22]=23;
+        id[23]=24; nama[23]="Bahasa Jepang";         kategori[23]="Bahasa";   jumlah[23]=14;
+        id[24]=25; nama[24]="Linguistik Umum";       kategori[24]="Bahasa";   jumlah[24]=6;
+        id[25]=26; nama[25]="Sastra Indonesia";      kategori[25]="Bahasa";   jumlah[25]=10;
+        id[26]=27; nama[26]="Tata Bahasa Inggris";   kategori[26]="Bahasa";   jumlah[26]=19;
+        id[27]=28; nama[27]="Bahasa Arab";           kategori[27]="Bahasa";   jumlah[27]=8;
+        id[28]=29; nama[28]="Pengantar Linguistik";  kategori[28]="Bahasa";   jumlah[28]=12;
+        id[29]=30; nama[29]="Semantik dan Pragmatik"; kategori[29]="Bahasa";  jumlah[29]=5;
+        jumlahData = 30;
     
         int pilihan;
         do {
